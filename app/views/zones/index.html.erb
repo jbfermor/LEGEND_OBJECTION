@@ -1,0 +1,37 @@
+<div class="row">
+  <p style="color: green"><%= notice %></p>
+</div>
+
+<div class="row mt-2">
+  <h1>Zonas</h1>
+</div>
+
+<div class="mt-2">
+  <div id="zones">
+    <table >
+      <thead>
+        <tr>
+          <td>Nombre</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @zones.empty? %>
+          <tr>
+            <td>No hay zonas creadas todavía</td>
+          </tr>
+        <% else %>
+          <% @zones.each do |zone| %>
+            <tr> 
+              <td ><%= link_to zone.name, zone %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <%= link_to "Agregar zona", new_zone_path, class: "btn btn-sm btn-success" %>
+</div>
+

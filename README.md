@@ -5,20 +5,52 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Posibles modelos:
 
-* System dependencies
+#Zona -> HECHO
+Persona
+Tipo de  comentario
+Comentario
 
-* Configuration
+En CONFIGURACION, para poder añadir
 
-* Database creation
+Tipo de comentarios {
+  id
+  name
+}
 
-* Database initialization
+Tipos: Objecion, Buena práctica
 
-* How to run the test suite
+Fuera de configuración.
 
-* Services (job queues, cache servers, search engines, etc.)
+Persona {
+  id
+  name
+  *zona_id: obligatorio
+}
 
-* Deployment instructions
+Comentario {
+  id
+  title
+  description
+  *tipo
+}
 
-* ...
+Pagina principal:
+  Objeciones
+    Lista de objeciones
+    Cada una con un numero de objeciones iguales
+    Cada una con un un boton para añadir una objecion igual de otra persona
+      Modal: guarda quien hace el comentario y lo suma
+        Zona
+        Persona
+        Mensaje: Si no está, créala antes
+
+  Buenas practicas
+    Idem a Objeciones
+
+  
+
+
+
+

@@ -1,0 +1,25 @@
+<div class="row">
+  <%= form_with(model: zone) do |form| %>
+  <% if zone.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(zone.errors.count, "error") %> prohibited this zone from being saved:</h2>
+
+      <ul>
+        <% zone.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mt-2">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mt-2">
+    <%= form.submit "Guardar Zona", class: "btn btn-sm btn-success" %>
+  </div>
+<% end %>
+</div>
+
