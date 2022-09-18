@@ -1,9 +1,11 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: %i[ show edit update destroy ]
+  before_action :set_comment, except: %i[ index new create ]
 
   # GET /comments or /comments.json
   def index
-    @comments = Comment.all.with_rich_text_description
+    @comments = Comment.all
+    @coincidence = Coincidence.new
+    @people = Person.all
   end
 
   # GET /comments/1 or /comments/1.json
@@ -25,8 +27,14 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new(
+      title: comment_params[:title],
+      description: comment_params[:description],
+      comment_type_id: comment_params[:comment_type_id]
+    )
+    person = Person.find(comment_params[:person_id])
     if @comment.save
+      @comment.people << person
       redirect_to @comment, notice: "comment was successfully created."
     else
       render :new, status: :unprocessable_entity
@@ -48,6 +56,17 @@ class CommentsController < ApplicationController
     redirect_to comments_url, notice: "comment was successfully destroyed." 
   end
 
+  def coincidence
+    comment = Comment.find(params[:comment_id])
+    person = Person.find(params[:person_id])
+    if comment.people.includes?(person)
+      redirect_to comments_url, notice: "Esta persona ya se añadió"
+    else
+      comment.people << person
+    end
+    redirect_to comments_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
@@ -56,6 +75,6 @@ class CommentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def comment_params
-      params.require(:comment).permit(:title, :description, :comment_type_id, :person_id)
+      params.require(:comment).permit(:title, :description, :number, :comment_type_id, :person_id)
     end
 end

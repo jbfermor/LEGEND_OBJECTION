@@ -1,4 +1,5 @@
 class Person < ApplicationRecord
   belongs_to :zone
-  has_and_belongs_to_many :comments
+  has_many :coincidences, dependent: :destroy
+  has_many :comments, through: :coincidences
 end

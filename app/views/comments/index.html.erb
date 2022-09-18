@@ -12,19 +12,21 @@
       <thead>
         <tr>
           <td>Título</td>
-          <td>Acciones</td>
+          <td>Coincidencias</td>
+          <td></td>
         </tr>
       </thead>
       <tbody>
         <% if @comments.empty? %>
           <tr>
-            <td>No hay comentarios creados todavía</td>
+            <td colspan="3">No hay comentarios creados todavía</td>
           </tr>
         <% else %>
           <% @comments.each do |comment| %>
             <tr> 
-              <td><%= link_to comment.title, comment %></td>
-              <td></td>
+              <td><%= link_to comment.title, comment, title: comment.description %></td>
+              <td><span class="badge text-bg-primary"><%= comment.coincidences.count %></span></td>
+              <td><%= link_to "Añadir coincidencia", new_comment_coincidence_path(comment), class: "btn btn-sm btn-success" %></td>
             </tr>
           <% end %>
         <% end %>
@@ -34,6 +36,6 @@
 </div>
 
 <div class="row mt-2">
-  <%= link_to "Agregar Comentario", new_comment_path, class: "btn btn-sm btn-success" %>
+  <%= link_to "Agregar Comentario Nuevo", new_comment_path, class: "btn btn-sm btn-success" %>
 </div>
 

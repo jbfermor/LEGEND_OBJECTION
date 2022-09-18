@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
   belongs_to :comment_type
-  has_and_belongs_to_many :people
+  has_many :coincidences, dependent: :destroy
+  has_many :people, through: :coincidences
 
-  has_rich_text :description
 end

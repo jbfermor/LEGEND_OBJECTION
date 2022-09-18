@@ -8,22 +8,24 @@ Things you may want to cover:
 * Posibles modelos:
 
 
-Comentario
 
-Fuera de configuración.
 
-Comentario {
+Coincidencia
+
+
+
+Coincidencia {
   id
-  title
-  description
-  *tipo
+  descripcion
+  *comentario
+  *persona
 }
 
 Pagina principal:
   Objeciones
     Lista de objeciones
     Cada una con un numero de objeciones iguales
-    Cada una con un un boton para añadir una objecion igual de otra persona
+    Cada una con un un boton para añadir una objecion igual de otra persona (coincidencia)
       Modal: guarda quien hace el comentario y lo suma
         Zona
         Persona
@@ -62,4 +64,12 @@ Persona {
   id
   name
   *zona_id: obligatorio
+}
+
+
+Comentario {
+  id
+  title
+  description
+  *tipo
 }
