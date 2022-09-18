@@ -4,8 +4,8 @@ class CommentsController < ApplicationController
 
   # GET /comments or /comments.json
   def index
-    @objections = Comment.all.where comment_type_id: 3
-    @goods = Comment.all.where comment_type_id: 1
+    @objections = Comment.all.where comment_type_id: 1
+    @goods = Comment.all.where comment_type_id: 2
     @comments = Comment.all
     @coincidence = Coincidence.new
     @people = Person.all
