@@ -1,0 +1,38 @@
+<div class="row">
+  <%= form_with(model: comment) do |form| %>
+  <% if comment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+        <% comment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mt-2">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :tile, class: "form-control" %>
+  </div>
+
+  <div class="mt-2">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.rich_text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="mt-2">
+    <%= form.collection_select :comment_type_id, @comment_types, :id, :name, class: "trix-content" %>
+  </div>
+
+  <div class="mt-2">
+    <%= form.collection_select :person_id, @people, :id, :name, class: "form-collection" %>
+  </div>
+
+  <div class="mt-2">
+    <%= form.submit "Guardar Comentario", class: "btn btn-sm btn-success" %>
+  </div>
+<% end %>
+</div>
+

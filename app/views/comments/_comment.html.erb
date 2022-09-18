@@ -1,0 +1,13 @@
+<div id="<%= dom_id comment %>">
+  <div class="card ">
+    <div class="card-header m-2 p-3 d-flex justify-content-between">
+      <h2><%= comment.name %></h2>
+      <div class="btn-group">
+        <div>
+          <%= link_to "Editar", edit_comment_path(@comment), class: "btn btn-sm btn-warning" %>
+        </div>
+        <%= button_to "Eliminar", @comment, method: :delete, class: "btn btn-sm btn-danger" %>
+      </div>
+    </div>
+  </div>   
+</div>
