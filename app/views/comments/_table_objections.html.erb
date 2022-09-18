@@ -1,0 +1,30 @@
+<div class="mt-2 p-3">
+  <h2>Objeciones</h2>
+</div>
+<div class="mt-2 p-3">
+  <table>
+    <thead class="table-danger">
+      <tr>
+        <td>Título</td>
+        <td>Coincidencias</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @objections.empty? %>
+        <tr>
+          <td colspan="3">No hay objeciones creados todavía</td>
+        </tr>
+      <% else %>
+        <% @objections.each do |comment| %>
+          <tr> 
+            <td><%= link_to comment.title, comment, title: comment.description %></td>
+            <td><span class="badge text-bg-primary"><%= comment.coincidences.count %></span></td>
+            <td><%= link_to "Añadir coincidencia", new_comment_coincidence_path(comment), class: "btn btn-sm btn-danger" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+

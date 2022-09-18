@@ -1,7 +1,7 @@
 <div id="<%= dom_id comment %>">
   <div class="card ">
     <div class="card-header m-2 p-3 d-flex justify-content-between">
-      <h2><%= comment.title %> <span class="badge text-bg-primary"><%= Comment.where(title: comment.title).count %></span></h2>
+      <h2><%= comment.title %> <span class="badge text-bg-primary"><%= comment.coincidences.count %></span></h2>
       <div class="btn-group">
         <div>
           <%= link_to "Editar", edit_comment_path(@comment), class: "btn btn-sm btn-warning" %>
@@ -10,16 +10,31 @@
       </div>
     </div>
     <div class="card-body mt-2 p-3">
+
       <div class="mt-2 p-3">
         <%= comment.description %>
       </div>
       <div class="mt-2 p-3">
         <table>
-          <% comment.coincidences.each do |coincidence| %>
+          <thead>
+            <tr>
+              <td>Persona</td>
+              <td>Zona</td>
+              <td>Descripción</td>
+              <td colspan="2"></td>
+            </tr>
+          </thead>
+          <tbody>
+            <% comment.coincidences.each do |coincidence| %>
             <tr>
               <td><%= coincidence.person.name %></td>
+              <td><%= coincidence.person.zone.name %></td>
+              <td><%= coincidence.description %></td>
+              <td><%= link_to "Ver", edit_comment_coincidence_path(comment, coincidence), class: "btn btn-sm btn-warning" %></td>
+              <td><%= button_to "Eliminar", comment_coincidence_path(comment), method: :delete, class: "btn btn-sm btn-danger" %></td>
             </tr>
           <% end %>
+          </tbody>
         </table>
         
       </div>

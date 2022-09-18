@@ -1,0 +1,30 @@
+<div class="mt-2 p-3">
+  <h2>Buenas prácticas</h2>
+</div>
+<div class="mt-2 p-3">
+  <table >
+    <thead class="table-success">
+      <tr>
+        <td>Título</td>
+        <td>Coincidencias</td>
+        <td></td>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @goods.empty? %>
+        <tr>
+          <td colspan="3">No hay comentarios creados todavía</td>
+        </tr>
+      <% else %>
+        <% @goods.each do |comment| %>
+          <tr> 
+            <td><%= link_to comment.title, comment, title: comment.description %></td>
+            <td><span class="badge text-bg-primary"><%= comment.coincidences.count %></span></td>
+            <td><%= link_to "Añadir coincidencia", new_comment_coincidence_path(comment), class: "btn btn-sm btn-success" %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
