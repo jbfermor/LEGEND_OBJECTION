@@ -1,0 +1,37 @@
+<div class="row">
+  <p style="color: green"><%= notice %></p>
+</div>
+
+<div class="row mt-2">
+  <h1>Tipos de comentario</h1>
+</div>
+
+<div class="mt-2">
+  <div id="comment_types">
+    <table >
+      <thead>
+        <tr>
+          <td>Nombre</td>
+        </tr>
+      </thead>
+      <tbody>
+        <% if @comment_types.empty? %>
+          <tr>
+            <td>No hay Tipos de Comentario creados todavía</td>
+          </tr>
+        <% else %>
+          <% @comment_types.each do |comment_type| %>
+            <tr> 
+              <td ><%= link_to comment_type.name, comment_type %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="row mt-2">
+  <%= link_to "Agregar Tipo de Comentario", new_comment_type_path, class: "btn btn-sm btn-success" %>
+</div>
+

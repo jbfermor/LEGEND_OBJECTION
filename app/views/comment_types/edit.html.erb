@@ -1,0 +1,10 @@
+<div class=" row mt-2">
+  <h1>Editando <%= @comment_type.name %></h1>
+</div>
+<div class=" row mt-2">
+  <%= render "form", comment_type: @comment_type %>
+</div>
+<div class=" row mt-2">
+  <%= link_to "Mostrar #{@comment_type.name}", @comment_type, class: "btn btn-sm btn-primary" %>
+  <%= link_to "Volver a Tipos de Comentario", comment_types_path, class: "btn btn-sm btn-dark" %>
+</div>
