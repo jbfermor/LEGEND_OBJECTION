@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row shadow">
   <%= form_with(model: zone) do |form| %>
   <% if zone.errors.any? %>
     <div style="color: red">
@@ -12,12 +12,12 @@
     </div>
   <% end %>
 
-  <div class="mt-2">
+  <div class="m-2">
     <%= form.label :name, class: "form-label" %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="mt-2">
+  <div class="m-2">
     <%= form.submit "Guardar Zona", class: "btn btn-sm btn-success" %>
   </div>
 <% end %>

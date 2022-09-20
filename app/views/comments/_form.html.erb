@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row shadow">
   <%= turbo_frame_tag "this_form" do %>
     <%= form_with model: comment, data: { controller: "dropdown", action: "change->dropdown#submit" } do |form| %>
       <% if comment.errors.any? %>
@@ -13,21 +13,21 @@
         </div>
       <% end %>
 
-      <div class="mt-2">
+      <div class="m-2">
         <%= form.label :title, class: "form-label" %>
         <%= form.text_field :title, class: "form-control" %>
       </div>
 
-      <div class="mt-2">
+      <div class="m-2">
         <%= form.label :description, class: "form-label" %>
         <%= form.text_area :description, size: "70x5", class: "form-control" %>
       </div>
 
-      <div class="mt-2">
+      <div class="m-2">
         <%= form.collection_select :comment_type_id, @comment_types, :id, :name, class:"form-select" %>
       </div>
 
-      <div class="mt-2">
+      <div class="m-2">
         <%= form.submit "Guardar Comentario", class: "btn btn-sm btn-success" %>
       </div>
 

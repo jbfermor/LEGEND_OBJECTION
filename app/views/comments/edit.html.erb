@@ -1,10 +1,10 @@
-<div class=" row mt-2">
+<div class=" row m-2 shadow">
   <h1>Editando <%= @comment.title %></h1>
 </div>
-<div class=" row mt-2">
+<div class=" row m-2">
   <%= render "form", comment: @comment %>
 </div>
-<div class=" row mt-2">
+<div class=" row m-2 shadow">
   <%= link_to "Mostrar comentario", @comment, class: "btn btn-sm btn-primary" %>
   <%= link_to "Volver a comentarios", comments_path, class: "btn btn-sm btn-dark" %>
 </div>
