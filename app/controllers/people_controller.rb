@@ -25,7 +25,7 @@ class PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
     if @person.save
-      redirect_to @person, notice: "person was successfully created."
+      redirect_to comments_path, notice: "person was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
