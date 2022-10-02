@@ -1,4 +1,8 @@
-<% if @people.present? %>
+<% if @people.empty? %>
+  <%= turbo_stream.replace "zone_people_list" do %>
+    <div class="m-2" id="zone_people_list">No hay personas creadas en esta zona</div>
+  <% end %>
+<% else %>
   <%= turbo_stream.replace "zone_people_list" do %>
     <div class="m-2" id="zone_people_list">
       <select class="form-select" name= "coincidence[person_id]" id="coincidence_person">
