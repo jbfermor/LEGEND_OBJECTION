@@ -1,0 +1,11 @@
+<% if @people.present? %>
+  <%= turbo_stream.replace "zone_people_list" do %>
+    <div class="m-2" id="zone_people_list">
+      <select class="form-select" name= "coincidence[person_id]" id="coincidence_person">
+        <% @people.each do |person| %>
+          <option value="<%= person.id %>"><%= person.name %></option>          
+        <% end %>
+      </select>
+    </div>
+  <% end %>
+<% end %>

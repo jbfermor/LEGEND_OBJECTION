@@ -2,6 +2,11 @@ Rails.application.routes.draw do
   resources :comments do
     resources :coincidences
   end
+  resources :coincidences do
+    collection do
+      get :fetch_zone_people
+    end
+  end
   resources :people
   resources :comment_types
   resources :zones

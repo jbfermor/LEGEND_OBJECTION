@@ -3,7 +3,7 @@ class CoincidencesController < ApplicationController
 
   def new
     @coincidence = Coincidence.new
-    @people = Person.all
+    @zones = Zone.all
   end
 
   def create
@@ -23,7 +23,7 @@ class CoincidencesController < ApplicationController
   end
 
   def edit
-    @people = Person.all
+
   end
 
   def update
@@ -37,6 +37,11 @@ class CoincidencesController < ApplicationController
   def destroy
     @coincidence.destroy
     redirect_to comments_path, notice: "Destrucción completada."
+  end
+
+  def fetch_zone_people
+    zone = Zone.find(params[:zone_id])
+    @people = zone.people
   end
 
   private
